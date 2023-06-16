@@ -113,7 +113,9 @@ async function run(): Promise<void> {
     if (shouldSkipBranchLint(headBranch, BRANCH_IGNORE_PATTERN)) {
       process.exit(0);
     }
-
+    console.log('PR Title ->', title);
+    console.log('PR Body ->', prBody);
+    
     const issueKeys = getJIRAIssueKeys(`${headBranch} ${title} ${prBody}`);
     if (!issueKeys.length) {
       const comment: IssuesCreateCommentParams = {
